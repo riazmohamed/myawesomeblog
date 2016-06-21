@@ -1,0 +1,50 @@
+<ul>
+  <% if @post.errors.any? %>
+    <li>
+      <%= "The Value you have entered is invalid" %>
+    </li>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<%= form_for @post do |f| %>
+  <ul>
+    <% if @post.errors.any? %>
+      <li>
+        <%= "The Value you have entered is invalid" %>
+      </li>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li>
+          <%= msg %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <div class="row control-group">
+    <div class="form-group col-xs-12 floating-label-form-group controls">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+      <p class="help-block text-danger"></p>
+    </div>
+  </div>
+  
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "form-control", placeholder: "Body" %>
+    <p class="help-block text-danger"></p>
+  </div>
+  
+  <br>
+  <div id="success"></div>
+  <div class="row">
+    <div class="form-group col-xs-12">
+      <%= f.submit class: "btn btn-default" %>
+    </div>
+  </div>
+<% end %>
